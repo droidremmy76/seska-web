@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -57,14 +58,13 @@ export default function HomeExperience() {
           <Image src="/media/logo.svg" alt="Seska Investments Ltd" width={240} height={88} priority />
         </a>
         <nav aria-label="Main navigation">
-          <a href="#services">Services</a>
-          <a href="#work">Work</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
+          <Link href="/about">About</Link>
+          <Link href="/services">Services</Link>
+          <Link href="/products">Products</Link>
+          <Link href="/work">Work</Link>
+          <Link href="/contact">Contact</Link>
         </nav>
-        <a className="nav-cta" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-          Get a Quote ↗
-        </a>
+        <Link className="nav-cta" href="/quote">Get a Quote ↗</Link>
       </header>
 
       <main>
@@ -90,7 +90,7 @@ export default function HomeExperience() {
               <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 {SESKA_DATA.hero.primaryCta} ↗
               </a>
-              <a className="button button-ghost" href="#contact">{SESKA_DATA.hero.secondaryCta} ↓</a>
+              <Link className="button button-ghost" href="/quote">{SESKA_DATA.hero.secondaryCta} ↗</Link>
             </div>
           </div>
 
@@ -127,7 +127,7 @@ export default function HomeExperience() {
           </div>
           <div className="services-list">
             {SESKA_DATA.services.map((service, index) => (
-              <article className="service-card" key={service.title} data-reveal>
+              <Link className="service-card" key={service.title} href="/services" data-reveal>
                 <div className="service-number">0{index + 1}</div>
                 <div className="service-copy">
                   <h3>{service.title}</h3>
@@ -137,7 +137,7 @@ export default function HomeExperience() {
                   </div>
                 </div>
                 <div className={`service-accent accent-${index % 3}`} aria-hidden="true" />
-              </article>
+              </Link>
             ))}
           </div>
         </section>
@@ -151,9 +151,9 @@ export default function HomeExperience() {
             <h2>BUILT ON NASSER ROAD. MADE FOR UGANDA.</h2>
             <p>Seska combines artwork preparation, production equipment, finishing and dispatch in one practical workflow built around deadlines, colour accuracy and dependable delivery.</p>
             <div className="metrics">
-              <div><strong>20+</strong><span>Years experience</span></div>
-              <div><strong>1,000+</strong><span>Jobs completed</span></div>
-              <div><strong>100+</strong><span>Customers served</span></div>
+              <div><strong>10+</strong><span>Years experience</span></div>
+              <div><strong>{SESKA_DATA.info.jobsCompleted}</strong><span>Jobs completed</span></div>
+              <div><strong>{SESKA_DATA.info.customersServed}</strong><span>Customers served</span></div>
             </div>
           </div>
         </section>
@@ -165,14 +165,15 @@ export default function HomeExperience() {
           </div>
           <div className="work-grid">
             {SESKA_DATA.work.map((item, index) => (
-              <article className={`work-card work-${index + 1}`} key={item.title} data-reveal>
+              <Link className={`work-card work-${index + 1}`} key={item.id} href={`/work#${item.id}`} data-reveal>
                 <div className="work-image">
                   <Image src={item.image} alt={item.title} fill sizes="(max-width: 900px) 100vw, 50vw" />
                 </div>
                 <div className="work-meta"><span>{item.category}</span><h3>{item.title}</h3><b>↗</b></div>
-              </article>
+              </Link>
             ))}
           </div>
+          <div className="home-section-link" data-reveal><Link href="/work">Explore all project categories ↗</Link></div>
         </section>
 
         <section id="process" className="process-section">
@@ -198,7 +199,7 @@ export default function HomeExperience() {
             <p>{SESKA_DATA.info.address}</p>
             <div className="contact-actions">
               <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp Us ↗</a>
-              <a className="contact-phone" href={whatsappUrl} target="_blank" rel="noopener noreferrer">{SESKA_DATA.info.whatsappFormatted}</a>
+              <Link className="contact-phone" href="/contact">Contact & directions ↗</Link>
             </div>
           </div>
           <div className="contact-visual" data-reveal>
