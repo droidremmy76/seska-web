@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SESKA_DATA } from "@/data/seska";
 import MobileMenu from "@/components/site/MobileMenu";
+import DesktopNav from "@/components/site/DesktopNav";
 
 type Accent = "cyan" | "magenta" | "yellow";
 
@@ -12,10 +13,23 @@ type InnerShellProps = {
   title: string;
   intro: string;
   accent?: Accent;
+  heroImage?: string;
+  heroAlt?: string;
+  heroPosition?: string;
   children: ReactNode;
 };
 
-export default function InnerShell({ index, eyebrow, title, intro, accent = "cyan", children }: InnerShellProps) {
+export default function InnerShell({
+  index,
+  eyebrow,
+  title,
+  intro,
+  accent = "cyan",
+  heroImage,
+  heroAlt = "",
+  heroPosition = "center",
+  children,
+}: InnerShellProps) {
   const whatsappUrl = `https://wa.me/${SESKA_DATA.info.whatsappRaw}?text=${encodeURIComponent(SESKA_DATA.info.whatsappMessage)}`;
 
   return (
@@ -24,19 +38,26 @@ export default function InnerShell({ index, eyebrow, title, intro, accent = "cya
         <Link href="/" className="inner-brand" aria-label="Seska Investments home">
           <Image src="/media/logo.svg" alt="Seska Investments Ltd" width={190} height={64} priority />
         </Link>
-        <nav aria-label="Site navigation">
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/work">Work</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
+        <DesktopNav />
         <Link className="inner-quote" href="/quote">Request a Quote ↗</Link>
         <MobileMenu />
       </header>
 
       <main>
-        <section className="inner-hero">
+        <section className={`inner-hero ${heroImage ? "inner-hero-has-media" : ""}`}>
+          {heroImage ? (
+            <div className="inner-hero-media">
+              <Image
+                src={heroImage}
+                alt={heroAlt}
+                fill
+                priority
+                sizes="100vw"
+                style={{ objectPosition: heroPosition }}
+              />
+              <div className="inner-hero-media-shade" aria-hidden="true" />
+            </div>
+          ) : null}
           <div className="inner-hero-grid" aria-hidden="true" />
           <div className="inner-hero-topline"><span>{index}</span><span>{eyebrow}</span><span>KAMPALA / UGANDA</span></div>
           <h1>{title}</h1>
