@@ -9,8 +9,20 @@ import { useScene } from "@/context/SceneContext";
 
 type Project = (typeof SESKA_DATA.work)[number];
 
+const FILTERS = [
+  { key: "all", label: "All Work", match: (_id: string) => true },
+  { key: "print", label: "Print & Signage", match: (id: string) => ["large-format", "print-finishing", "corporate-stationery"].includes(id) },
+  { key: "promo", label: "Apparel & Promo", match: (id: string) => ["corporate-apparel", "corporate-merchandise"].includes(id) },
+  { key: "ids", label: "PVC IDs", match: (id: string) => id === "pvc-ids" },
+  { key: "awards", label: "Awards", match: (id: string) => id === "awards-recognition" },
+  { key: "production", label: "Production", match: (id: string) => id === "workshop-production" },
+] as const;
+
+type FilterKey = (typeof FILTERS)[number]["key"];
+
 export default function WorkGallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [filter, setFilter] = useState<FilterKey>("all");
   const selected = selectedIndex === null ? null : SESKA_DATA.work[selectedIndex];
   const { setCursor, resetCursor } = useCursor();
   const { setScene } = useScene();
@@ -20,16 +32,68 @@ export default function WorkGallery() {
     return () => resetCursor();
   }, [setScene, resetCursor]);
 
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    if (!id) return;
+    const index = SESKA_DATA.work.findIndex((item) => item.id === id);
+    if (index >= 0) setSelectedIndex(index);
+  }, []);
+
+  const selectProject = useCallback((index: number) => {
+    setSelectedIndex(index);
+    const project = SESKA_DATA.work[index];
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${project.id}`);
+  }, []);
+
+  const closeProject = useCallback(() => {
+    setSelectedIndex(null);
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+  }, []);
+
+  const previousProject = useCallback(() => {
+    if (selectedIndex === null) return;
+    selectProject((selectedIndex - 1 + SESKA_DATA.work.length) % SESKA_DATA.work.length);
+  }, [selectProject, selectedIndex]);
+
+  const nextProject = useCallback(() => {
+    if (selectedIndex === null) return;
+    selectProject((selectedIndex + 1) % SESKA_DATA.work.length);
+  }, [selectProject, selectedIndex]);
+
+  const activeFilter = FILTERS.find((item) => item.key === filter) ?? FILTERS[0];
+  const visibleProjects = SESKA_DATA.work
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => activeFilter.match(item.id));
+
   return (
     <>
+      <section className="inner-section work-intro-band">
+        <p>Browse by production family, then open any card for a closer project-style view with materials, production technique, finishing, turnaround guidance and client category.</p>
+        <strong>{visibleProjects.length} production {visibleProjects.length === 1 ? "category" : "categories"}</strong>
+      </section>
+
+      <div className="portfolio-filter" role="toolbar" aria-label="Filter work categories">
+        {FILTERS.map((item) => (
+          <button
+            key={item.key}
+            type="button"
+            className={filter === item.key ? "is-active" : ""}
+            onClick={() => setFilter(item.key)}
+            aria-pressed={filter === item.key}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
       <section className="inner-section portfolio-grid interactive-portfolio">
-        {SESKA_DATA.work.map((item, index) => (
+        {visibleProjects.map(({ item, index }) => (
           <button
             id={item.id}
             type="button"
             key={item.id}
             className={`portfolio-project ${index % 3 === 0 ? "portfolio-wide" : ""}`}
-            onClick={() => setSelectedIndex(index)}
+            onClick={() => selectProject(index)}
             onMouseEnter={() => setCursor("view", "VIEW")}
             onMouseLeave={resetCursor}
             aria-haspopup="dialog"
@@ -51,9 +115,9 @@ export default function WorkGallery() {
         <ProjectModal
           project={selected}
           projectIndex={selectedIndex}
-          onClose={() => setSelectedIndex(null)}
-          onPrevious={() => setSelectedIndex((selectedIndex - 1 + SESKA_DATA.work.length) % SESKA_DATA.work.length)}
-          onNext={() => setSelectedIndex((selectedIndex + 1) % SESKA_DATA.work.length)}
+          onClose={closeProject}
+          onPrevious={previousProject}
+          onNext={nextProject}
         />
       ) : null}
     </>
@@ -101,18 +165,36 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
       gsap.fromTo("[data-project-reveal]", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, stagger: 0.055, ease: "power3.out", delay: 0.14 });
     }, overlayRef);
 
-    closeButtonRef.current?.focus();
+    requestAnimationFrame(() => closeButtonRef.current?.focus());
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
         close();
-      } else if (event.key === "ArrowLeft") {
+        return;
+      }
+      if (event.key === "ArrowLeft") {
         event.preventDefault();
         onPrevious();
-      } else if (event.key === "ArrowRight") {
+        return;
+      }
+      if (event.key === "ArrowRight") {
         event.preventDefault();
         onNext();
+        return;
+      }
+      if (event.key !== "Tab" || !panelRef.current) return;
+
+      const focusable = Array.from(panelRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
