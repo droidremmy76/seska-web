@@ -1,12 +1,23 @@
-import Image from "next/image";
 import InnerShell from "@/components/site/InnerShell";
-import { SESKA_DATA } from "@/data/seska";
+import WorkGallery from "@/components/work/WorkGallery";
 
 export default function WorkPage() {
   return (
-    <InnerShell index="04 / WORK" eyebrow="SELECTED PRODUCTION" title="MADE TO BE SEEN, USED AND REMEMBERED." intro="A visual overview of the production categories Seska handles across print, signage, identification, apparel and promotional branding.">
-      <section className="inner-section portfolio-grid">{SESKA_DATA.work.map((item, index) => <article key={item.title} className={index % 3 === 0 ? "portfolio-wide" : ""}><div className="portfolio-image"><Image src={item.image} alt={item.title} fill sizes="(max-width: 900px) 100vw, 55vw" /></div><span>{item.category}</span><h2>{item.title}</h2></article>)}</section>
-      <section className="inner-section note-panel"><span className="inner-label">PROJECT GALLERIES</span><h2>FULL CASE STUDIES ARE THE NEXT BUILD PASS.</h2><p>The interactive project modal architecture is prepared for real project photography, production specifications, materials, finishing and turnaround details.</p></section>
+    <InnerShell
+      index="04 / WORK"
+      eyebrow="SELECTED PRODUCTION"
+      title="MADE TO BE SEEN, USED AND REMEMBERED."
+      intro="Explore Seska production categories across print, signage, identification, apparel and promotional branding. Open any project to inspect materials, techniques, finishing and production details."
+    >
+      <WorkGallery />
+
+      <section className="inner-section note-panel">
+        <span className="inner-label">REAL PROJECT MEDIA PASS</span>
+        <h2>THE CASE-STUDY SYSTEM IS NOW LIVE.</h2>
+        <p>
+          The portfolio is ready for the real Seska project photography supplied for this build. The current category visuals can be replaced progressively without changing the interaction, specification or gallery architecture.
+        </p>
+      </section>
     </InnerShell>
   );
 }
