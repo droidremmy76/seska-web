@@ -9,6 +9,7 @@ import { SESKA_DATA } from "@/data/seska";
 import { useScene, type SceneMode } from "@/context/SceneContext";
 import { useCursor } from "@/context/CursorContext";
 import MobileMenu from "@/components/site/MobileMenu";
+import DesktopNav from "@/components/site/DesktopNav";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,6 +81,7 @@ export default function HomeExperience() {
   }, [setScene]);
 
   const activeSlide = SESKA_DATA.hero.slides[slide];
+  const activeHeadline = slide === 0 ? SESKA_DATA.hero.headline : activeSlide.title;
 
   return (
     <div ref={rootRef} className="site-shell">
@@ -87,13 +89,7 @@ export default function HomeExperience() {
         <a className="brand" href="#top" aria-label="Seska Investments home">
           <Image src="/media/logo.svg" alt="Seska Investments Ltd" width={240} height={88} priority />
         </a>
-        <nav aria-label="Main navigation">
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/work">Work</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
+        <DesktopNav ariaLabel="Main navigation" />
         <Link
           className="nav-cta"
           href="/quote"
@@ -120,7 +116,7 @@ export default function HomeExperience() {
           <div className="hero-copy">
             <p className="hero-kicker">COMMERCIAL PRINT & VISUAL PRODUCTION / KAMPALA / UGANDA</p>
             <div className="hero-title-wrap">
-              <h1>{SESKA_DATA.hero.headline}</h1>
+              <h1 key={`hero-headline-${slide}`} className="hero-dynamic-title">{activeHeadline}</h1>
               <span className="registration-mark" aria-hidden="true"><i /><i /><i /></span>
             </div>
             <p className="hero-subheadline">{SESKA_DATA.hero.subheadline}</p>
