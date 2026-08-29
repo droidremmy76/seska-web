@@ -14,6 +14,7 @@ import { ClientMotionShell } from "@/components/providers/ClientMotionShell";
 import { SESKA_DATA } from "@/data/seska";
 
 const siteUrl = "https://seskainvestments.com";
+const socialImage = "/media/workshop-real.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -42,11 +43,13 @@ export const metadata: Metadata = {
     siteName: "Seska Investments Ltd",
     title: "Seska Investments Ltd | Digital Printing & Branding in Kampala",
     description: "Commercial printing, large-format branding, apparel, PVC IDs, awards, stationery and graphic design from Nasser Road, Kampala.",
+    images: [{ url: socialImage, width: 900, height: 675, alt: "Seska Investments production workshop in Kampala" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Seska Investments Ltd | Digital Printing & Branding in Kampala",
     description: "Commercial printing, branding and visual production from Nasser Road, Kampala, Uganda.",
+    images: [socialImage],
   },
 };
 
@@ -61,6 +64,7 @@ const businessJsonLd = {
   "@type": "ProfessionalService",
   name: "Seska Investments Ltd",
   url: siteUrl,
+  image: `${siteUrl}${socialImage}`,
   description: "Commercial printing, graphic design, large-format branding, apparel branding, PVC identification, awards, stationery and print finishing in Kampala, Uganda.",
   telephone: SESKA_DATA.info.whatsappFormatted,
   email: "seskainvestmentsltd@gmail.com",
