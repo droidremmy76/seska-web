@@ -4,12 +4,21 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SESKA_DATA } from "@/data/seska";
+import { useCursor } from "@/context/CursorContext";
+import { useScene } from "@/context/SceneContext";
 
 type Project = (typeof SESKA_DATA.work)[number];
 
 export default function WorkGallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const selected = selectedIndex === null ? null : SESKA_DATA.work[selectedIndex];
+  const { setCursor, resetCursor } = useCursor();
+  const { setScene } = useScene();
+
+  useEffect(() => {
+    setScene("work");
+    return () => resetCursor();
+  }, [setScene, resetCursor]);
 
   return (
     <>
@@ -21,6 +30,8 @@ export default function WorkGallery() {
             key={item.id}
             className={`portfolio-project ${index % 3 === 0 ? "portfolio-wide" : ""}`}
             onClick={() => setSelectedIndex(index)}
+            onMouseEnter={() => setCursor("view", "VIEW")}
+            onMouseLeave={resetCursor}
             aria-haspopup="dialog"
             aria-expanded={selectedIndex === index}
             aria-label={`Open ${item.title} project details`}
@@ -62,8 +73,10 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
   const panelRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const { setCursor, resetCursor } = useCursor();
 
   const close = useCallback(() => {
+    resetCursor();
     if (!overlayRef.current || !panelRef.current) {
       onClose();
       return;
@@ -72,7 +85,7 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
     const tl = gsap.timeline({ onComplete: onClose });
     tl.to(panelRef.current, { y: 36, opacity: 0, duration: 0.3, ease: "power3.in" });
     tl.to(overlayRef.current, { opacity: 0, duration: 0.2, ease: "power2.in" }, "-=0.14");
-  }, [onClose]);
+  }, [onClose, resetCursor]);
 
   useEffect(() => {
     setGalleryIndex(0);
@@ -108,11 +121,13 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      resetCursor();
       ctx.revert();
     };
-  }, [close, onNext, onPrevious]);
+  }, [close, onNext, onPrevious, resetCursor]);
 
   const activeImage = project.gallery[galleryIndex] ?? project.image;
+  const showNextGalleryImage = () => setGalleryIndex((current) => (current + 1) % project.gallery.length);
 
   return (
     <div
@@ -131,7 +146,16 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
             <span>PROJECT {String(projectIndex + 1).padStart(2, "0")}</span>
             <strong>{project.category}</strong>
           </div>
-          <button ref={closeButtonRef} type="button" onClick={close} aria-label="Close project details">CLOSE ×</button>
+          <button
+            ref={closeButtonRef}
+            type="button"
+            onClick={close}
+            onMouseEnter={() => setCursor("pointer", "CLOSE")}
+            onMouseLeave={resetCursor}
+            aria-label="Close project details"
+          >
+            CLOSE ×
+          </button>
         </header>
 
         <div className="work-modal-hero">
@@ -141,10 +165,18 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
             <p data-project-reveal>{project.summary}</p>
             <div className="modal-registration" data-project-reveal aria-hidden="true"><i /><i /><i /><i /></div>
           </div>
-          <div className="work-modal-image" data-project-reveal>
+          <button
+            type="button"
+            className="work-modal-image"
+            data-project-reveal
+            onClick={showNextGalleryImage}
+            onMouseEnter={() => setCursor("drag", "NEXT")}
+            onMouseLeave={resetCursor}
+            aria-label={`Show next image for ${project.title}`}
+          >
             <Image src={activeImage} alt={`${project.title} view ${galleryIndex + 1}`} fill sizes="(max-width: 980px) 100vw, 60vw" />
             <div className="work-modal-image-count">{String(galleryIndex + 1).padStart(2, "0")} / {String(project.gallery.length).padStart(2, "0")}</div>
-          </div>
+          </button>
         </div>
 
         <section className="work-specs">
@@ -162,6 +194,8 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
               key={`${project.id}-${image}-${index}`}
               className={index === galleryIndex ? "is-active" : ""}
               onClick={() => setGalleryIndex(index)}
+              onMouseEnter={() => setCursor("view", "ZOOM")}
+              onMouseLeave={resetCursor}
               aria-label={`Show project image ${index + 1}`}
               aria-pressed={index === galleryIndex}
             >
@@ -172,9 +206,29 @@ function ProjectModal({ project, projectIndex, onClose, onPrevious, onNext }: Pr
         </section>
 
         <footer className="work-modal-nav">
-          <button type="button" onClick={onPrevious}>← PREVIOUS PROJECT</button>
-          <a href="/quote">REQUEST SOMETHING LIKE THIS ↗</a>
-          <button type="button" onClick={onNext}>NEXT PROJECT →</button>
+          <button
+            type="button"
+            onClick={onPrevious}
+            onMouseEnter={() => setCursor("drag", "PREV")}
+            onMouseLeave={resetCursor}
+          >
+            ← PREVIOUS PROJECT
+          </button>
+          <a
+            href="/quote"
+            onMouseEnter={() => setCursor("pointer", "QUOTE")}
+            onMouseLeave={resetCursor}
+          >
+            REQUEST SOMETHING LIKE THIS ↗
+          </a>
+          <button
+            type="button"
+            onClick={onNext}
+            onMouseEnter={() => setCursor("drag", "NEXT")}
+            onMouseLeave={resetCursor}
+          >
+            NEXT PROJECT →
+          </button>
         </footer>
       </div>
     </div>
