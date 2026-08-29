@@ -21,6 +21,15 @@ const SCENE_TARGETS: Array<{ selector: string; scene: SceneMode }> = [
   { selector: "#contact", scene: "contact" },
 ];
 
+const CLIENT_GROUPS = [
+  ["Companies & SMEs", "Corporate print, signage, uniforms and everyday business materials"],
+  ["Schools & Universities", "IDs, certificates, books, event branding and institutional print"],
+  ["NGOs & Government", "Campaign materials, reports, stationery, displays and formal production"],
+  ["Architects & Engineers", "A0 / A1 / A2 plans, technical drawings, scanning and reproduction"],
+  ["Events & Communities", "Banners, flags, apparel, awards, invitations and promotional products"],
+  ["Individual Customers", "Personal print jobs, gifts, apparel, invitations and custom branding"],
+] as const;
+
 export default function HomeExperience() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [slide, setSlide] = useState(0);
@@ -220,9 +229,34 @@ export default function HomeExperience() {
           </div>
         </section>
 
+        <section className="home-clients section-light" data-reveal>
+          <div className="home-clients-head">
+            <span>04 / WHO WE SERVE</span>
+            <h2>BUILT FOR ORGANISATIONS THAT CANNOT AFFORD TO LOOK UNPREPARED.</h2>
+            <p>From one urgent job to recurring institutional production, the workflow is designed around clear specifications, dependable output and practical delivery.</p>
+          </div>
+          <div className="home-client-grid">
+            {CLIENT_GROUPS.map(([group, description], index) => (
+              <article key={group}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{group}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
+          </div>
+          <Link
+            className="home-clients-link"
+            href="/about"
+            onMouseEnter={() => setCursor("pointer", "ABOUT")}
+            onMouseLeave={resetCursor}
+          >
+            More about Seska ↗
+          </Link>
+        </section>
+
         <section id="work" className="work-section section-light">
           <div className="section-heading" data-reveal>
-            <span>04 / SELECTED WORK</span>
+            <span>05 / SELECTED WORK</span>
             <h2>MADE TO BE SEEN.</h2>
           </div>
           <div className="work-grid">
@@ -255,7 +289,7 @@ export default function HomeExperience() {
 
         <section id="process" className="process-section">
           <div className="section-heading dark" data-reveal>
-            <span>05 / EXPRESS ORDERING</span>
+            <span>06 / EXPRESS ORDERING</span>
             <h2>FROM BRIEF TO DELIVERY.</h2>
           </div>
           <div className="process-grid">
@@ -271,7 +305,7 @@ export default function HomeExperience() {
 
         <section id="contact" className="contact-section">
           <div className="contact-copy" data-reveal>
-            <span>06 / START A PROJECT</span>
+            <span>07 / START A PROJECT</span>
             <h2>READY TO PRINT?</h2>
             <p>{SESKA_DATA.info.address}</p>
             <div className="contact-actions">
