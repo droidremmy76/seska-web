@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SESKA_DATA } from "@/data/seska";
+import MobileMenu from "@/components/site/MobileMenu";
 
 type Accent = "cyan" | "magenta" | "yellow";
 
@@ -31,6 +32,7 @@ export default function InnerShell({ index, eyebrow, title, intro, accent = "cya
           <Link href="/contact">Contact</Link>
         </nav>
         <Link className="inner-quote" href="/quote">Request a Quote ↗</Link>
+        <MobileMenu />
       </header>
 
       <main>
