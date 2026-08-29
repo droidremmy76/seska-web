@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const productionViews = [
-  { title: "Large-Format Production", label: "PRINT / VINYL / SIGNAGE", image: "/media/large-format.svg" },
+  { title: "Large-Format Production", label: "PRINT / VINYL / SIGNAGE", image: "/media/workshop-real.jpg" },
   { title: "Apparel Branding", label: "EMBROIDERY / APPAREL", image: "/media/apparel.svg" },
   { title: "Professional Finishing", label: "CUT / FINISH / DELIVER", image: "/media/finishing.svg" },
 ];
@@ -80,9 +80,9 @@ export default function ServicesPage() {
       title="FROM FILE TO FINISHED PRODUCT."
       intro="Commercial printing, branding and production services engineered for sharp colour, durable materials and dependable turnaround in Kampala and across Uganda."
       accent="magenta"
-      heroImage="/media/large-format.svg"
-      heroAlt="Large-format printing and branding production"
-      heroPosition="center 45%"
+      heroImage="/media/workshop-real.jpg"
+      heroAlt="Seska Investments large-format printing and branding production workshop"
+      heroPosition="center 48%"
     >
       <section className="inner-section service-page-list">
         {SESKA_DATA.services.map((service, index) => (
@@ -100,7 +100,7 @@ export default function ServicesPage() {
       <section className="inner-section product-grid">
         {productionViews.map((item, index) => (
           <article key={item.title}>
-            <div className="product-image"><Image src={item.image} alt={item.title} fill sizes="(max-width: 800px) 100vw, 33vw" /></div>
+            <div className="product-image"><Image src={item.image} alt={item.title} fill sizes="(max-width: 800px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: item.image.includes("workshop-real") ? "center 48%" : undefined }} /></div>
             <span>0{index + 1}</span>
             <h2>{item.title}</h2>
             <p>{item.label}</p>
