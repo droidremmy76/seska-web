@@ -54,7 +54,7 @@ export default function HomeExperience() {
     <div ref={rootRef} className="site-shell">
       <header className="site-nav">
         <a className="brand" href="#top" aria-label="Seska Investments home">
-          <Image src="/media/logo.png" alt="Seska Investments Ltd" width={240} height={88} priority />
+          <Image src="/media/logo.svg" alt="Seska Investments Ltd" width={240} height={88} priority />
         </a>
         <nav aria-label="Main navigation">
           <a href="#services">Services</a>
@@ -144,12 +144,12 @@ export default function HomeExperience() {
 
         <section className="trust-section" data-reveal>
           <div className="trust-image">
-            <Image src="/media/real-workshop.webp" alt="Seska workshop and production team in Kampala" fill sizes="(max-width: 900px) 100vw, 50vw" />
+            <Image src="/media/workshop.svg" alt="Seska workshop and production system in Kampala" fill sizes="(max-width: 900px) 100vw, 50vw" />
           </div>
           <div className="trust-copy">
-            <span className="section-index">03 / REAL PRODUCTION</span>
+            <span className="section-index">03 / PRODUCTION</span>
             <h2>BUILT ON NASSER ROAD. MADE FOR UGANDA.</h2>
-            <p>Real equipment, real production capacity and people who understand deadlines. Your job is handled from artwork preparation through printing, finishing and dispatch.</p>
+            <p>Seska combines artwork preparation, production equipment, finishing and dispatch in one practical workflow built around deadlines, colour accuracy and dependable delivery.</p>
             <div className="metrics">
               <div><strong>20+</strong><span>Years experience</span></div>
               <div><strong>1,000+</strong><span>Jobs completed</span></div>
@@ -202,13 +202,13 @@ export default function HomeExperience() {
             </div>
           </div>
           <div className="contact-visual" data-reveal>
-            <Image src="/media/merchandise.webp" alt="Seska branded merchandise" fill sizes="(max-width: 900px) 100vw, 42vw" />
+            <Image src="/media/merchandise.svg" alt="Seska branded merchandise showcase" fill sizes="(max-width: 900px) 100vw, 42vw" />
           </div>
         </section>
       </main>
 
       <footer className="site-footer">
-        <Image src="/media/logo.png" alt="Seska Investments Ltd" width={210} height={70} />
+        <Image src="/media/logo.svg" alt="Seska Investments Ltd" width={210} height={70} />
         <p>{SESKA_DATA.info.tagline}</p>
         <p>© {new Date().getFullYear()} Seska Investments Ltd · Kampala, Uganda</p>
         <div className="cmyk-strip" aria-hidden="true"><i /><i /><i /><i /></div>
