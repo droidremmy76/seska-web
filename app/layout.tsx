@@ -9,6 +9,7 @@ import "./route-transitions.css";
 import "./polish-pass.css";
 import "./mobile-actions.css";
 import "./hero-polish.css";
+import "./content-polish.css";
 import { ClientMotionShell } from "@/components/providers/ClientMotionShell";
 import { SESKA_DATA } from "@/data/seska";
 
