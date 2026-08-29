@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SESKA_DATA } from "@/data/seska";
 import { useScene, type SceneMode } from "@/context/SceneContext";
 import { useCursor } from "@/context/CursorContext";
+import MobileMenu from "@/components/site/MobileMenu";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,6 +102,7 @@ export default function HomeExperience() {
         >
           Get a Quote ↗
         </Link>
+        <MobileMenu />
       </header>
 
       <main>
