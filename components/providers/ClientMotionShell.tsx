@@ -3,6 +3,10 @@
 import dynamic from "next/dynamic";
 import type { ReactNode } from "react";
 import { MotionProvider } from "@/context/MotionContext";
+import { SceneProvider } from "@/context/SceneContext";
+import { CursorProvider } from "@/context/CursorContext";
+import { CustomCursor } from "@/components/motion/CustomCursor";
+import MobileQuickActions from "@/components/site/MobileQuickActions";
 
 const PersistentThreeCanvas = dynamic(
   () => import("@/components/three/PersistentThreeCanvas").then((m) => m.PersistentThreeCanvas),
@@ -12,8 +16,14 @@ const PersistentThreeCanvas = dynamic(
 export function ClientMotionShell({ children }: { children: ReactNode }) {
   return (
     <MotionProvider>
-      {children}
-      <PersistentThreeCanvas />
+      <SceneProvider>
+        <CursorProvider>
+          <PersistentThreeCanvas />
+          {children}
+          <MobileQuickActions />
+          <CustomCursor />
+        </CursorProvider>
+      </SceneProvider>
     </MotionProvider>
   );
 }
