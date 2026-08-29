@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { SESKA_DATA } from "@/data/seska";
 
 const specialistServices = [
@@ -27,6 +27,13 @@ export default function QuoteComposer() {
   const [details, setDetails] = useState("");
 
   const serviceOptions = useMemo(() => [...SESKA_DATA.services.map((item) => item.title), ...specialistServices], []);
+
+  useEffect(() => {
+    const requestedService = new URLSearchParams(window.location.search).get("service");
+    if (requestedService && serviceOptions.includes(requestedService)) {
+      setService(requestedService);
+    }
+  }, [serviceOptions]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
