@@ -6,12 +6,25 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SESKA_DATA } from "@/data/seska";
+import { useScene, type SceneMode } from "@/context/SceneContext";
+import { useCursor } from "@/context/CursorContext";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SCENE_TARGETS: Array<{ selector: string; scene: SceneMode }> = [
+  { selector: "#top", scene: "hero" },
+  { selector: "#services", scene: "services" },
+  { selector: "#work", scene: "work" },
+  { selector: "#process", scene: "process" },
+  { selector: "#contact", scene: "contact" },
+];
 
 export default function HomeExperience() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [slide, setSlide] = useState(0);
+  const { setScene } = useScene();
+  const { setCursor, resetCursor } = useCursor();
+
   const whatsappUrl = useMemo(
     () => `https://wa.me/${SESKA_DATA.info.whatsappRaw}?text=${encodeURIComponent(SESKA_DATA.info.whatsappMessage)}`,
     []
@@ -26,12 +39,14 @@ export default function HomeExperience() {
 
   useEffect(() => {
     if (!rootRef.current) return;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".hero-copy > *",
         { y: 34, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.9, stagger: 0.08, ease: "power3.out", delay: 0.15 }
       );
+
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
         gsap.fromTo(
           element,
@@ -45,9 +60,23 @@ export default function HomeExperience() {
           }
         );
       });
+
+      SCENE_TARGETS.forEach(({ selector, scene }) => {
+        const element = rootRef.current?.querySelector<HTMLElement>(selector);
+        if (!element) return;
+
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top 55%",
+          end: "bottom 45%",
+          onEnter: () => setScene(scene),
+          onEnterBack: () => setScene(scene),
+        });
+      });
     }, rootRef);
+
     return () => ctx.revert();
-  }, []);
+  }, [setScene]);
 
   const activeSlide = SESKA_DATA.hero.slides[slide];
 
@@ -64,7 +93,14 @@ export default function HomeExperience() {
           <Link href="/work">Work</Link>
           <Link href="/contact">Contact</Link>
         </nav>
-        <Link className="nav-cta" href="/quote">Get a Quote ↗</Link>
+        <Link
+          className="nav-cta"
+          href="/quote"
+          onMouseEnter={() => setCursor("pointer", "QUOTE")}
+          onMouseLeave={resetCursor}
+        >
+          Get a Quote ↗
+        </Link>
       </header>
 
       <main>
@@ -87,10 +123,24 @@ export default function HomeExperience() {
             </div>
             <p className="hero-subheadline">{SESKA_DATA.hero.subheadline}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                className="button button-primary"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onMouseEnter={() => setCursor("pointer", "SEND")}
+                onMouseLeave={resetCursor}
+              >
                 {SESKA_DATA.hero.primaryCta} ↗
               </a>
-              <Link className="button button-ghost" href="/quote">{SESKA_DATA.hero.secondaryCta} ↗</Link>
+              <Link
+                className="button button-ghost"
+                href="/quote"
+                onMouseEnter={() => setCursor("pointer", "QUOTE")}
+                onMouseLeave={resetCursor}
+              >
+                {SESKA_DATA.hero.secondaryCta} ↗
+              </Link>
             </div>
           </div>
 
@@ -104,7 +154,14 @@ export default function HomeExperience() {
 
           <div className="slide-dots" aria-label="Hero slides">
             {SESKA_DATA.hero.slides.map((item, index) => (
-              <button key={item.image} className={index === slide ? "is-active" : ""} onClick={() => setSlide(index)} aria-label={`Show slide ${index + 1}`} />
+              <button
+                key={item.image}
+                className={index === slide ? "is-active" : ""}
+                onClick={() => setSlide(index)}
+                onMouseEnter={() => setCursor("pointer", `0${index + 1}`)}
+                onMouseLeave={resetCursor}
+                aria-label={`Show slide ${index + 1}`}
+              />
             ))}
           </div>
         </section>
@@ -127,7 +184,14 @@ export default function HomeExperience() {
           </div>
           <div className="services-list">
             {SESKA_DATA.services.map((service, index) => (
-              <Link className="service-card" key={service.title} href="/services" data-reveal>
+              <Link
+                className="service-card"
+                key={service.title}
+                href="/services"
+                data-reveal
+                onMouseEnter={() => setCursor("pointer", "EXPLORE")}
+                onMouseLeave={resetCursor}
+              >
                 <div className="service-number">0{index + 1}</div>
                 <div className="service-copy">
                   <h3>{service.title}</h3>
@@ -165,7 +229,14 @@ export default function HomeExperience() {
           </div>
           <div className="work-grid">
             {SESKA_DATA.work.map((item, index) => (
-              <Link className={`work-card work-${index + 1}`} key={item.id} href={`/work#${item.id}`} data-reveal>
+              <Link
+                className={`work-card work-${index + 1}`}
+                key={item.id}
+                href={`/work#${item.id}`}
+                data-reveal
+                onMouseEnter={() => setCursor("view", "VIEW")}
+                onMouseLeave={resetCursor}
+              >
                 <div className="work-image">
                   <Image src={item.image} alt={item.title} fill sizes="(max-width: 900px) 100vw, 50vw" />
                 </div>
@@ -173,7 +244,15 @@ export default function HomeExperience() {
               </Link>
             ))}
           </div>
-          <div className="home-section-link" data-reveal><Link href="/work">Explore all project categories ↗</Link></div>
+          <div className="home-section-link" data-reveal>
+            <Link
+              href="/work"
+              onMouseEnter={() => setCursor("pointer", "ALL WORK")}
+              onMouseLeave={resetCursor}
+            >
+              Explore all project categories ↗
+            </Link>
+          </div>
         </section>
 
         <section id="process" className="process-section">
@@ -198,8 +277,24 @@ export default function HomeExperience() {
             <h2>READY TO PRINT?</h2>
             <p>{SESKA_DATA.info.address}</p>
             <div className="contact-actions">
-              <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp Us ↗</a>
-              <Link className="contact-phone" href="/contact">Contact & directions ↗</Link>
+              <a
+                className="button button-primary"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onMouseEnter={() => setCursor("pointer", "CHAT")}
+                onMouseLeave={resetCursor}
+              >
+                WhatsApp Us ↗
+              </a>
+              <Link
+                className="contact-phone"
+                href="/contact"
+                onMouseEnter={() => setCursor("pointer", "VISIT")}
+                onMouseLeave={resetCursor}
+              >
+                Contact & directions ↗
+              </Link>
             </div>
           </div>
           <div className="contact-visual" data-reveal>
