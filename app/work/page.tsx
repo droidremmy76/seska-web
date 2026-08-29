@@ -16,9 +16,9 @@ export default function WorkPage() {
       eyebrow="SELECTED PRODUCTION"
       title="MADE TO BE SEEN, USED AND REMEMBERED."
       intro="Explore Seska production categories across print, signage, identification, apparel and promotional branding. Open any project to inspect materials, techniques, finishing and production details."
-      heroImage="/media/finishing.svg"
-      heroAlt="Commercial printing and finishing production"
-      heroPosition="center 46%"
+      heroImage="/media/workshop-real.jpg"
+      heroAlt="Seska Investments production workshop in Kampala"
+      heroPosition="center 48%"
     >
       <WorkGallery />
 
