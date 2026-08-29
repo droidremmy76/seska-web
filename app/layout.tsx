@@ -3,6 +3,7 @@ import "./globals.css";
 import "./inner-pages.css";
 import "./work-modal.css";
 import "./home-extra.css";
+import "./photo-pass.css";
 import { ClientMotionShell } from "@/components/providers/ClientMotionShell";
 
 export const metadata: Metadata = {
