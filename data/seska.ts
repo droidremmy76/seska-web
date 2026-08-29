@@ -22,9 +22,9 @@ export const SESKA_DATA = {
     primaryCta: "Send Your Design",
     secondaryCta: "Get a Fast Quote",
     slides: [
-      { image: "/media/hero-vinyl.webp", eyebrow: "Large Format / Vinyl / Signage", title: "BRANDING MADE TO BE SEEN." },
-      { image: "/media/hero-embroidery.webp", eyebrow: "Corporate Apparel / Embroidery", title: "YOUR BRAND, WORN WELL." },
-      { image: "/media/hero-finishing.webp", eyebrow: "Commercial Print / Finishing", title: "PRINTED SHARP. FINISHED RIGHT." },
+      { image: "/media/large-format.svg", eyebrow: "Large Format / Vinyl / Signage", title: "BRANDING MADE TO BE SEEN." },
+      { image: "/media/apparel.svg", eyebrow: "Corporate Apparel / Embroidery", title: "YOUR BRAND, WORN WELL." },
+      { image: "/media/finishing.svg", eyebrow: "Commercial Print / Finishing", title: "PRINTED SHARP. FINISHED RIGHT." },
     ],
   },
   services: [
@@ -55,12 +55,12 @@ export const SESKA_DATA = {
     },
   ],
   work: [
-    { title: "Large Format Production", category: "SIGNAGE / VINYL", image: "/media/hero-vinyl.webp" },
-    { title: "Corporate Apparel", category: "EMBROIDERY / BRANDING", image: "/media/apparel.webp" },
-    { title: "PVC & Proximity IDs", category: "IDENTIFICATION", image: "/media/pvc-ids.webp" },
-    { title: "Print Finishing", category: "COMMERCIAL PRINT", image: "/media/hero-finishing.webp" },
-    { title: "Workshop & Production", category: "NASSER ROAD / KAMPALA", image: "/media/workshop.webp" },
-    { title: "Corporate Merchandise", category: "PROMOTIONAL PRODUCTS", image: "/media/merchandise.webp" },
+    { title: "Large Format Production", category: "SIGNAGE / VINYL", image: "/media/large-format.svg" },
+    { title: "Corporate Apparel", category: "EMBROIDERY / BRANDING", image: "/media/apparel.svg" },
+    { title: "PVC & Proximity IDs", category: "IDENTIFICATION", image: "/media/pvc-ids.svg" },
+    { title: "Print Finishing", category: "COMMERCIAL PRINT", image: "/media/finishing.svg" },
+    { title: "Workshop & Production", category: "NASSER ROAD / KAMPALA", image: "/media/workshop.svg" },
+    { title: "Corporate Merchandise", category: "PROMOTIONAL PRODUCTS", image: "/media/merchandise.svg" },
   ],
   process: [
     { title: "Share Design", desc: "Send artwork or work with our in-house designers on Nasser Road." },
