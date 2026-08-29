@@ -6,6 +6,7 @@ import { MotionProvider } from "@/context/MotionContext";
 import { SceneProvider } from "@/context/SceneContext";
 import { CursorProvider } from "@/context/CursorContext";
 import { CustomCursor } from "@/components/motion/CustomCursor";
+import MobileQuickActions from "@/components/site/MobileQuickActions";
 
 const PersistentThreeCanvas = dynamic(
   () => import("@/components/three/PersistentThreeCanvas").then((m) => m.PersistentThreeCanvas),
@@ -19,6 +20,7 @@ export function ClientMotionShell({ children }: { children: ReactNode }) {
         <CursorProvider>
           <PersistentThreeCanvas />
           {children}
+          <MobileQuickActions />
           <CustomCursor />
         </CursorProvider>
       </SceneProvider>
