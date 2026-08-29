@@ -115,7 +115,14 @@ export default function HomeExperience() {
           <div className="hero-media" aria-hidden="true">
             {SESKA_DATA.hero.slides.map((item, index) => (
               <div key={item.image} className={`hero-image ${index === slide ? "is-active" : ""}`}>
-                <Image src={item.image} alt="" fill sizes="100vw" priority={index === 0} />
+                <Image
+                  src={item.image}
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  priority={index === 0}
+                  style={{ objectPosition: index === 0 ? "center 48%" : undefined }}
+                />
               </div>
             ))}
             <div className="hero-vignette" />
@@ -215,7 +222,13 @@ export default function HomeExperience() {
 
         <section className="trust-section" data-reveal>
           <div className="trust-image">
-            <Image src="/media/workshop.svg" alt="Seska workshop and production system in Kampala" fill sizes="(max-width: 900px) 100vw, 50vw" />
+            <Image
+              src="/media/workshop-real.jpg"
+              alt="Seska Investments large-format production workshop in Kampala"
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
+              style={{ objectFit: "cover", objectPosition: "center 48%" }}
+            />
           </div>
           <div className="trust-copy">
             <span className="section-index">03 / PRODUCTION</span>
