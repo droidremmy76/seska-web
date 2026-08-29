@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import InnerShell from "@/components/site/InnerShell";
 import WorkGallery from "@/components/work/WorkGallery";
+
+export const metadata: Metadata = {
+  title: "Printing & Branding Portfolio",
+  description: "Explore Seska Investments production categories across large-format signage, commercial print, PVC IDs, apparel, promotional merchandise, awards and corporate stationery.",
+  alternates: { canonical: "/work" },
+};
 
 export default function WorkPage() {
   return (
@@ -8,15 +16,17 @@ export default function WorkPage() {
       eyebrow="SELECTED PRODUCTION"
       title="MADE TO BE SEEN, USED AND REMEMBERED."
       intro="Explore Seska production categories across print, signage, identification, apparel and promotional branding. Open any project to inspect materials, techniques, finishing and production details."
+      heroImage="/media/finishing.svg"
+      heroAlt="Commercial printing and finishing production"
+      heroPosition="center 46%"
     >
       <WorkGallery />
 
       <section className="inner-section note-panel">
-        <span className="inner-label">REAL PROJECT MEDIA PASS</span>
-        <h2>THE CASE-STUDY SYSTEM IS NOW LIVE.</h2>
-        <p>
-          The portfolio is ready for the real Seska project photography supplied for this build. The current category visuals can be replaced progressively without changing the interaction, specification or gallery architecture.
-        </p>
+        <span className="inner-label">YOUR JOB / YOUR SPECIFICATION</span>
+        <h2>SEE A DIRECTION THAT FITS YOUR PROJECT?</h2>
+        <p>Every job is quoted around the actual size, quantity, material, artwork, finishing and deadline. Use the project views as production references, then send Seska your exact requirements.</p>
+        <Link className="button button-primary" href="/quote">Request a production quote ↗</Link>
       </section>
     </InnerShell>
   );
