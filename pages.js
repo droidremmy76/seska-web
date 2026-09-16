@@ -1,0 +1,1 @@
+document.querySelector('.menu').onclick=()=>{const n=document.querySelector('nav');const open=n.classList.toggle('open');document.querySelector('.menu').setAttribute('aria-expanded',open)};document.querySelectorAll('.whatsapp-trigger').forEach(b=>b.onclick=()=>location.href='index.html#contact');document.getElementById('year').textContent=new Date().getFullYear();

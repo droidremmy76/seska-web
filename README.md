@@ -1,27 +1,17 @@
-# Seska Investments Ltd — Motion Platform
+# Seska Investments Ltd Website
 
-Production Next.js + React Three Fiber + Three.js + GSAP + Lenis foundation for the Seska Investments Ltd website.
+A polished static website for Seska Investments Ltd, a printing, design and branding company in Kampala, Uganda.
 
-## Stack
-- Next.js App Router + TypeScript
-- React Three Fiber / Three.js / Drei
-- GSAP + ScrollTrigger
-- Lenis smooth scrolling
-- Tailwind CSS
-- Raw GLSL shaders
+## Preview
 
-## Local development
-```bash
-npm install
-npm run dev
-```
+Open `index.html` with a local static server. For example: `python -m http.server 8080`.
 
-## Production test
-```bash
-npm run typecheck
-npm run build
-npm run start
-```
+## Highlights
 
-## Deployment
-The repository is configured for Vercel and standalone Docker deployment.
+- Scroll-controlled full-screen hero film
+- Responsive service, product, workshop, process and portfolio sections
+- Quote brief generator
+- Local Lucide icon sprite
+- Reduced-motion support
+
+Some visuals are labelled as brand visualisations until verified workshop and project photography is supplied. Direct WhatsApp/email delivery is waiting for verified Seska contact details.
