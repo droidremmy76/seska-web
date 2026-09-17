@@ -1,0 +1,49 @@
+.answer-page { max-width: 1280px; margin: auto; padding: 0 5% 70px; }
+.answer-breadcrumb { max-width: 1280px; margin: 0 auto; padding: 24px 5%; font-size: 14px; }
+.answer-page .answer-breadcrumb { padding-inline: 0; }
+.answer-breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; padding: 0; margin: 0; }
+.answer-breadcrumb li+li::before { content: '/'; margin-right: 12px; color: #58616a; }
+.answer-breadcrumb a, .answer-page a:not(.button), .business-facts a, .answer-overview a, .answer-related, .answer-service-link { text-decoration: underline; text-underline-offset: 4px; }
+.answer-intro { max-width: 900px; padding: 38px 0 55px; }
+.answer-intro .eyebrow { margin-bottom: 24px; color: #00619e; }
+.answer-intro h1 { font-size: clamp(46px, 6.4vw, 84px); line-height: 1.05; margin: 0 0 28px; }
+.answer-intro>p:not(.eyebrow) { max-width: 760px; margin-top: 14px; font-size: 18px; }
+.answer-layout { display: grid; grid-template-columns: minmax(200px, 270px) minmax(0, 1fr); gap: 65px; align-items: start; }
+.answer-toc { position: sticky; top: 25px; padding: 20px 0; border-top: 3px solid #006eb6; max-height: calc(100dvh - 50px); overflow: auto; }
+.answer-toc h2 { font: 700 18px/1.4 Arial, sans-serif; margin-bottom: 15px; }
+.answer-toc ol { padding: 0 0 0 23px; margin: 0; }
+.answer-toc li { padding: 6px 0 6px 4px; font-size: 14px; }
+.answer-toc a { display: inline-block; padding: 5px 0; }
+.answer-unit { border-top: 1px solid #c5d1da; padding: 32px 0 40px; scroll-margin-top: 24px; }
+.answer-unit h2 { font: 700 clamp(24px, 2.8vw, 34px)/1.2 Arial, sans-serif; letter-spacing: -.025em; margin-bottom: 18px; }
+.answer-unit .eyebrow { font-size: 12px; margin-bottom: 16px; color: #00619e; }
+.answer-unit p { font-size: 17px; line-height: 1.7; margin: 0 0 20px; }
+.answer-unit h3, .service-purpose dt { font-size: 16px; font-weight: 700; margin: 24px 0 8px; }
+.service-purpose { margin: 0; }
+.service-purpose dd { margin: 0; color: #58616a; }
+.answer-unit ul { padding-left: 22px; margin: 0 0 24px; }
+.answer-unit li { margin-bottom: 8px; }
+.answer-related, .answer-service-link { color: #005d99; font-weight: 600; }
+.answer-service-link { margin-left: 24px; }
+.ordering-steps { list-style: none; padding: 0; margin: 0; }
+.answer-next { padding: 32px; background: #eff7fc; margin-top: 35px; }
+.answer-next h2 { font-size: 34px; line-height: 1.15; margin-bottom: 16px; }
+.answer-next p { margin-bottom: 24px; max-width: 750px; }
+.answer-next>a { display: inline-flex; margin-right: 20px; margin-bottom: 10px; }
+.answer-footer { display: flex; gap: 18px 28px; flex-wrap: wrap; border-top: 1px solid #526570; padding-block: 24px; font-size: 14px; }
+.answer-footer a { text-decoration: underline; text-underline-offset: 4px; }
+.answer-overview { padding-block: 60px; }
+.answer-overview h2 { font-size: clamp(32px, 4vw, 52px); line-height: 1.1; margin: 18px 0 24px; }
+.answer-overview>p:not(.eyebrow) { max-width: 900px; font-size: 18px; }
+.answer-hub-links { display: flex; flex-wrap: wrap; gap: 18px 28px; margin-top: 26px; color: #005d99; font-weight: 600; }
+.business-facts { max-width: 1296px; padding: 0 5% 70px; margin: auto; }
+.business-facts h2 { font: 700 30px/1.2 Arial, sans-serif; margin-bottom: 24px; }
+.business-facts dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+.business-facts dl>div { border-top: 1px solid #c5d1da; padding: 15px 0; }
+.business-facts dt { font-size: 14px; color: #58616a; margin-bottom: 5px; }
+.business-facts dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.standalone-page .section-head h1 { font-size: clamp(44px, 5.8vw, 76px); line-height: 1.05; }
+.about-story h2, .legal-copy h2 { font: 700 24px/1.25 Arial, sans-serif; margin: 28px 0 12px; }
+.answer-page :focus-visible, .answer-overview :focus-visible, .answer-footer :focus-visible, .business-facts :focus-visible { outline: 3px solid #006eb6; outline-offset: 4px; }
+.header nav a[aria-current=page] { text-decoration: underline; text-underline-offset: 6px; }
+@media(max-width: 800px) { .answer-layout { grid-template-columns: 1fr; gap: 32px; } .answer-toc { position: static; max-height: none; } .answer-intro { padding-top: 20px; padding-bottom: 32px; } .answer-next { padding: 24px; } .business-facts dl { grid-template-columns: 1fr; } .answer-service-link { margin-left: 0; display: block; } }

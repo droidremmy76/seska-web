@@ -79,7 +79,7 @@
   // Call after client-side route changes. Only known public paths are measured;
   // queries, fragments, titles, referrers, form contents and dynamic IDs are excluded.
   function pageContext() {
-    const publicPaths = ['/', '/index.html', '/about.html', '/privacy.html'];
+    const publicPaths = ['/', '/index.html', '/about.html', '/privacy.html', '/services.html', '/ordering-guide.html', '/answers.html'];
     const path = publicPaths.includes(location.pathname) ? location.pathname : '/other';
     return { page_location: location.origin + path, page_title: path, page_referrer: '' };
   }
