@@ -1,0 +1,270 @@
+{
+  "siteUrl": "https://www.seskainvestments.com/",
+  "business": {
+    "name": "Seska Investments Ltd",
+    "description": "Printing, design and branding on Nasser Road in Kampala, Uganda.",
+    "street": "Nasser Road",
+    "city": "Kampala",
+    "country": "UG",
+    "postalAddress": "P.O. Box 141411",
+    "privacyEmail": "info@seskainvestments.com",
+    "hours": "Monday to Saturday, 8:00 am–6:00 pm",
+    "serviceArea": "Uganda"
+  },
+  "services": [
+    {
+      "id": "digital-offset-printing",
+      "name": "Digital & Offset Printing",
+      "summary": "Business cards, flyers, brochures, books, receipt books and company stationery. Tell us the quantity, size, paper and finish you need.",
+      "purpose": "Printed business stationery, promotional materials and publications.",
+      "inputs": [
+        "Product, finished size and quantity",
+        "Paper and finishing requirements",
+        "Artwork and required deadline"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "large-format-signage",
+      "name": "Large-Format & Signage",
+      "summary": "Banners, roll-ups, posters, shop signs and event displays. We help match the material and finishing to where it will be used.",
+      "purpose": "Banners, displays and signage for shops, events and organisations.",
+      "inputs": [
+        "Display size and quantity",
+        "Indoor or outdoor use and intended location",
+        "Material and finishing requirements"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "pvc-proximity-cards",
+      "name": "PVC & Proximity ID Cards",
+      "summary": "Staff and student identification, PVC cards, proximity cards and lanyards. Confirm system compatibility before ordering proximity cards.",
+      "purpose": "Staff and student identification, with compatibility checks for proximity cards.",
+      "inputs": [
+        "Card type and quantity",
+        "Artwork and any individual names or details",
+        "Required system compatibility for proximity cards"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "corporate-apparel",
+      "name": "Corporate Apparel & Branding",
+      "summary": "T-shirts, polos, caps and workwear. Discuss embroidery or print, garment sizes, colours and logo placement.",
+      "purpose": "Garments carrying an organisation’s name, logo or message.",
+      "inputs": [
+        "Garment type, sizes, colours and quantities",
+        "Logo placement",
+        "Preferred embroidery or print method"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "branded-merchandise",
+      "name": "Branded Merchandise",
+      "summary": "Mugs, notebooks, awards and promotional gifts for your organisation or event. Product availability and branding options are confirmed with your quote.",
+      "purpose": "Branded gifts and promotional items for organisations and events.",
+      "inputs": [
+        "Product and quantity",
+        "Artwork and intended use",
+        "Required deadline; availability needs confirmation"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "stickers-vinyl",
+      "name": "Stickers & Vinyl",
+      "summary": "Labels, packaging stickers, window graphics and vinyl branding. Share the surface, size and indoor or outdoor use.",
+      "purpose": "Labels and graphics for packaging, windows and other surfaces.",
+      "inputs": [
+        "Surface, size and quantity",
+        "Indoor or outdoor use",
+        "Artwork and finishing requirements"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "print-finishing",
+      "name": "Print Finishing",
+      "summary": "Discuss binding, trimming, lamination and finishing options to give your printed work the right feel and durability.",
+      "purpose": "Binding, trimming and lamination for printed work.",
+      "inputs": [
+        "Printed product and finished size",
+        "Quantity",
+        "Binding, trimming or lamination requirements"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "technical-plotting",
+      "name": "Technical Plotting",
+      "summary": "A0, A1 and A2 drawings for architects, engineers and construction teams. Supply the scale, sheet size and required number of sets.",
+      "purpose": "Large-format drawings for architecture, engineering and construction.",
+      "inputs": [
+        "Sheet size: A0, A1 or A2",
+        "Drawing scale",
+        "Number of sets and required deadline"
+      ],
+      "source": "index.html#services"
+    },
+    {
+      "id": "website-motion-design",
+      "name": "Website Design & Motion Graphics",
+      "summary": "Digital experiences and motion content that extend your brand beyond print. Tell us your audience, content and intended channels.",
+      "purpose": "Website design and motion content for digital brand communication.",
+      "inputs": [
+        "Audience and project purpose",
+        "Available content",
+        "Intended website or motion channels and required deadline"
+      ],
+      "source": "index.html#services"
+    }
+  ],
+  "faqs": [
+    {
+      "id": "what-seska-does",
+      "question": "What does Seska Investments Ltd do?",
+      "answer": "Seska Investments Ltd provides printing, design and branding on Nasser Road in Kampala, Uganda. Its services include digital and offset printing, signage, ID cards, corporate apparel, branded merchandise, stickers, print finishing, technical plotting, website design and motion graphics.",
+      "related": "services.html",
+      "label": "Explore the service guide",
+      "source": "index.html#services"
+    },
+    {
+      "id": "location",
+      "question": "Where is Seska Investments Ltd located?",
+      "answer": "Seska Investments Ltd is based on Nasser Road in Kampala, Uganda. The website currently provides an area map; the exact workshop pin is not yet confirmed. Check the contact information before planning your visit.",
+      "related": "about.html#business-details",
+      "label": "View business details",
+      "source": "index.html#contact"
+    },
+    {
+      "id": "opening-hours",
+      "question": "What are Seska’s opening hours?",
+      "answer": "Seska Investments Ltd lists its opening hours as Monday to Saturday, 8:00 am to 6:00 pm. Holiday hours are not listed; confirm availability before a special trip.",
+      "related": "about.html#business-details",
+      "label": "View business details",
+      "source": "index.html#contact"
+    },
+    {
+      "id": "quote-cost",
+      "question": "How much does printing at Seska cost?",
+      "answer": "Seska quotes each job according to product, quantity, size, material and finishing. Delivery may add a separate charge. Share your specifications to request a quote in Ugandan shillings (UGX); the website does not publish a fixed price list.",
+      "related": "ordering-guide.html#quote-details",
+      "label": "Prepare your quote details",
+      "source": "index.html#delivery"
+    },
+    {
+      "id": "turnaround",
+      "question": "How long will my printing order take?",
+      "answer": "Seska confirms turnaround for each order based on the product, quantity, materials and finishing. Include your required deadline in the brief so production and delivery timing can be agreed before the order proceeds.",
+      "related": "ordering-guide.html#approval",
+      "label": "Understand order approval",
+      "source": "index.html#faq"
+    },
+    {
+      "id": "minimum-quantity",
+      "question": "Is there a minimum order quantity at Seska?",
+      "answer": "Minimum quantities at Seska vary by product and production method. State the quantity you need when preparing your brief. Seska can then advise on a suitable option; there is no single published minimum for all services.",
+      "related": "services.html",
+      "label": "Compare service requirements",
+      "source": "index.html#faq"
+    },
+    {
+      "id": "design-help",
+      "question": "Can Seska help with artwork and design?",
+      "answer": "Seska offers design support as well as working with supplied artwork. Explain your project, intended audience and required output. The scope of design work and any design charges are agreed with the quote.",
+      "related": "ordering-guide.html#artwork",
+      "label": "Prepare your artwork",
+      "source": "index.html#faq"
+    },
+    {
+      "id": "artwork-formats",
+      "question": "Which artwork file formats does Seska accept?",
+      "answer": "Seska lists PDF, PSD, JPG, PNG, Word, PowerPoint, AI and EPS as artwork formats. Include the intended finished size. A print-ready PDF is a useful starting point, but suitability must be reviewed for the chosen production process.",
+      "related": "ordering-guide.html#artwork",
+      "label": "Read the artwork guidance",
+      "source": "index.html#artwork"
+    },
+    {
+      "id": "delivery",
+      "question": "Does Seska deliver outside Kampala?",
+      "answer": "Delivery from Seska can be arranged across Uganda. Include your destination in the brief so delivery availability, timing and charges can be agreed with your quote. Collection in Kampala is also available.",
+      "related": "ordering-guide.html#delivery",
+      "label": "Plan collection or delivery",
+      "source": "index.html#delivery"
+    },
+    {
+      "id": "bulk-pricing",
+      "question": "Does Seska offer pricing for bulk printing orders?",
+      "answer": "Seska prices printing according to quantity, material, format and finishing. Request a quote for your required quantity, or ask to compare several quantities. A bulk discount is not automatically guaranteed.",
+      "related": "ordering-guide.html#quote-details",
+      "label": "Build a quote brief",
+      "source": "index.html#faq"
+    },
+    {
+      "id": "colour-matching",
+      "question": "Will my printed colours match my screen?",
+      "answer": "Screens and printed materials can display colours differently. For a Seska print order, share brand colour references and discuss a proof or sample if close colour matching is important. Agree the colour expectations before approving production.",
+      "related": "ordering-guide.html#approval",
+      "label": "Review before production",
+      "source": "index.html#faq"
+    },
+    {
+      "id": "payment",
+      "question": "How do payment and artwork approval work at Seska?",
+      "answer": "Seska agrees artwork, specifications, the quote and payment arrangements before production. The website lists Mobile Money, bank transfer and cash; company terms may be available for approved accounts. Confirm payment instructions directly with Seska before paying.",
+      "related": "ordering-guide.html#approval",
+      "label": "Read the ordering steps",
+      "source": "index.html#delivery"
+    },
+    {
+      "id": "brief-sending",
+      "question": "Does the website send my project brief to Seska?",
+      "answer": "The Seska website prepares a project brief on your device. It does not automatically send the brief or upload artwork. Use Copy or Download to save the brief, then share it through a confirmed Seska contact channel.",
+      "related": "index.html#quote",
+      "label": "Prepare a project brief",
+      "source": "app.js"
+    },
+    {
+      "id": "privacy-contact",
+      "question": "How can I contact Seska about privacy or deletion requests?",
+      "answer": "Email info@seskainvestments.com for privacy questions and access, correction or deletion requests. The project brief tool does not automatically send your form entries to Seska. The privacy notice explains optional analytics and your choices.",
+      "related": "privacy.html",
+      "label": "Read the privacy notice",
+      "source": "User-confirmed privacy email; privacy.html"
+    }
+  ],
+  "steps": [
+    {
+      "id": "quote-details",
+      "title": "Prepare the project details",
+      "text": "List the product or service, finished size, quantity, preferred materials and finishing, deadline and collection or delivery location. These details help Seska prepare a quote in UGX."
+    },
+    {
+      "id": "artwork",
+      "title": "Prepare artwork or describe the design",
+      "text": "Provide ready artwork or explain the design support you need. Seska lists PDF, PSD, JPG, PNG, Word, PowerPoint, AI and EPS. Include the finished size; file suitability is reviewed for the chosen process. The website does not upload these files."
+    },
+    {
+      "id": "save-brief",
+      "title": "Save and share your brief",
+      "text": "Complete the project brief form, then copy or download the prepared text. It stays on your device until you choose to share it. Direct online enquiry delivery and artwork upload are not connected; use a confirmed Seska contact channel."
+    },
+    {
+      "id": "approval",
+      "title": "Agree the quote, artwork and payment",
+      "text": "Confirm specifications, design scope, material, finishing, production timing and payment arrangements with Seska. Share brand colour references and discuss a proof or sample if colour accuracy matters. Production follows the agreed approval."
+    },
+    {
+      "id": "production",
+      "title": "Production and finishing",
+      "text": "The approved order moves into the agreed printing, branding or production process. Finishing may include trimming, binding or lamination, according to the job. Timing depends on the agreed product and specifications."
+    },
+    {
+      "id": "delivery",
+      "title": "Arrange collection or delivery",
+      "text": "Collect in Kampala or discuss delivery across Uganda. Agree the destination, availability, delivery charges and timing with your quote. Do not assume a delivery fee or date until it is confirmed."
+    }
+  ]
+}
